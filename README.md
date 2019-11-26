@@ -78,8 +78,6 @@ int main(void)
 
 ## Librarys :books:
 
-#include (stdio.h)
-
 #include <stdio.h>
 
 #include <stdlib.h>
@@ -107,3 +105,5 @@ Use the Betty style, it will be checked using [betty-style.pl](https://github.co
 Licence 📄
 
 This project is under [License](https://opensource.org/).
+
+[Flowcharts](https://www.goconqr.com/es-ES/p/20309125-Simple-Shell-flowcharts)
