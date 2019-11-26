@@ -1,0 +1,172 @@
+.TH Simple_Shell 1
+
+.Sh SIMPLE SHELL
+.B ./hsh
+\- the standard command interpreter
+
+.SH SYNOPSIS
+.B hsh
+.RB [\| options \|]
+
+.SH DESCRIPTION
+.B Simple Shell - hsh is a command programming language that executes commands
+read from a terminal or a file.
+
+
+.B Commands
+A simple-command is a sequence of non blank words separated by blanks (a blank
+is a tab or a space). The first word specifies the name of the command to be
+executed. Except as specified below the remaining words are passed as arguments
+to the invoked command. The command name is passed as argument 0 (see exec(2)).
+
+
+The value of a simple-command is its exit status if it terminates normally.
+
+The following parameters are used by the shell:
+.RS
+.nf
+- PATH		The search path.
+- HOME		The default argument (home directory).
+- ENV		Environment list.
+- PPID		Prints the PID of the parent process.
+- PWD		The current working directory as set by the cd command.
+- GETLINE		Find file in the path.
+- STRTOK		Word file in the path.
+.RE
+
+.B Input and output
+Before a command is executed its input and output may be redirected using a
+special notation interpreted by the shell.
+
+.B Environment
+The environment is a list of name-value pairs that is passed to an executed
+program in the same way as a normal argument list; see exec(2) and environ(5).
+
+.B Special commands
+The following commands are executed in the shell process itself:
+.RS
+.nf
+- file	Read and execute commands from file and return. The search path $PATH
+  	  	is used to find the directory containing file.
+- exit	Causes the shell to exit with the exit status.
+- pwd  	Prints the name of the current directory.
+- wait	Wait for the specified process and report its termination status.
+
+.SH FILES
+.nf
+MyShell.h				- librarys for program.
+env_exit				- Function for exit program
+find file				- Find command.
+main-shell			- Main program of project
+str_functions(2)		- Functions for project (stlen,str,strcmp and others).
+strtok_function		- Function for split the path and find.
+validator_getline		- Validator
+.RE
+
+.SH SEE ALSO
+.BR access (2),
+.BR chdir (2),
+.BR close (2),
+.BR closedir (3),
+.BR execve (2),
+.BR exit (3),
+.BR _exit (2),
+.BR fflush (3),
+.BR fork (2),
+.BR free (3),
+.BR getcwd (3),
+.BR getline (3),
+.BR isatty (3),
+.BR kill (2),
+.BR malloc (3),
+.BR open (2),
+.BR opendir (3),
+.BR perror (3),
+.BR read (2),
+.BR readdir (3),
+.BR signal (2),
+.BR stat (__xstat) (2),
+.BR lstat (__lxstat) (2),
+.BR fstat (__fxstat) (2),
+.BR strtok (3),
+.BR wait (2),
+.BR waitpid (2),
+.BR wait3 (2),
+.BR wait4 (2),
+.BR write (2),
+.BR env(1),
+.BR exec(2),
+.BR signal(2).
+
+
+.SH EXAMPLES
+Use ./fork
+
+#include <stdio.h>
+#include <unistd.h>
+
+/**
+ * main - fork example
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    pid_t my_pid;
+    pid_t child_pid;
+
+    child_pid = fork();
+    if (child_pid == -1)
+    {
+        perror("Error:");
+        return (1);
+    }
+    my_pid = getpid();
+    printf("My pid is %u\n", my_pid);
+    if (child_pid == 0)
+    {
+        printf("(%u) Nooooooooo!\n", my_pid);
+    }
+    else
+    {
+        printf("(%u) %u, I am your father\n", my_pid, child_pid);
+    }
+    return (0);
+}
+
+.SH EXIT STATUS
+.TP
+.B
+0
+Success
+
+.TP
+.B
+1
+Success but reboot required
+
+.TP
+.B
+2
+Success but no reboot required
+
+.SH AUTHORS
+
+Juan C. López https://github.com/JuanLopezS
+
+Leidy J. Saldaña https://github.com/Leidysalda
+
+
+.SH COPYRIGHT
+.PP
+Copyright 2019. All rights reserved
+
+.SH CREDITS
+.PP
+This man page is created only for demonstration at the students for Holberton School Colombia.
+
+.SH RETURN VALUE
+This function return the characters printed excluding the null.
+
+.SH Referenced By
+[SH(1)](https://linux.die.net/man/1/sh).
