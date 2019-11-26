@@ -1,13 +1,13 @@
 #include "MyShell.h"
 
 /**
- * main - PROGRAM SHELL
+ * main - SIMULATOR PROGRAM SHELL
  * Return: function will always return 0
  */
 
 int main(void)
 {
-  char *buffer = NULL, **command; 
+	char *buffer = NULL, **command;
   int status, pointer, i, y, ex;
   pid_t pidC;
   struct stat st;
@@ -38,10 +38,10 @@ int main(void)
 	      ex = execve(command[0], command, NULL);
 	      if (ex == -1)
 		perror("Error Execve");
-	      free(command);
 	    }
 	  else if (pidC > 0)
-	    wait(&status);
+		  wait(&status);
+	  free(command);
 	  free(buffer);
 	}
 	return (0);

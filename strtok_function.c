@@ -1,6 +1,6 @@
 #include "MyShell.h"
 /**
- MEMORY POINTERS 
+ MEMORY POINTERS
  */
 int _memory(char *buffer)
 {

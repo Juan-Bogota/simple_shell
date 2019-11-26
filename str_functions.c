@@ -1,95 +1,101 @@
 #include "MyShell.h"
-/**
- * *_strcpy 
- */
-
-char *_strcpy(char *dest, char *src)
-{
-	int a;
-	int b;
-
-	a = 0;
-	b = 0;
-	while (src[a] != '\0')
-	{
-		dest[b] = src[a];
-		a++;
-		b++;
-	}
-	return (dest);
-}
 
 /**
- * _strdup - function will return pointer to copied string
+ * _strdup - function that returns a pointer to a newly allocated space in
+ * memory, which contains a copy of the string given as a parameter.
+ *
+ * @str: array
+ *
+ * Return: Pointer of a string copied.
  */
-
 char *_strdup(char *str)
 {
-	char *ptr;
+	int i, j;
+	char *string;
 
 	if (str == NULL)
-		return (NULL);
-	ptr = malloc(_strlen(str) + 1);
-	if (ptr != NULL)
-		_strcpy(ptr, str);
-	return (ptr);
+		return (0);
+	i = 0;
+
+	while (*(str + i) != '\0')
+		i++;
+	string = malloc(i + 1);
+	if (string == 0)
+		return (0);
+	for (j = 0; j < i; j++)
+		*(string + j) = *(str + j);
+	return (string);
 }
 
 /**
- * *_strcat - Function will concatenate two strings
+ * _strcat - FUnction will concatenate two strings
+ * @dest: The caracter to print
+ * @src: The word to print
+ *Return: String concatenate.
  */
 char *_strcat(char *dest, char *src)
 {
-	int a;
-	int b;
-
-	a = 0;
-	b = 0;
-
-	while (dest[b] != '\0')
+	int i;
+	int j;
+	i = 0;
+	while (dest[i] != '\0')
+		i++;
+	j = 0;
+	while (src[j] != '\0')
 	{
-		b++;
+		dest[i + j] = src[j];
+		j++;
 	}
-	while (src[a] != '\0')
-	{
-		dest[b] = src[a];
-		a++;
-		b++;
-	}
-	dest[b] = '\0';
+	i++;
 	return (dest);
 }
 
 /**
+ * _strlen - return the length of a string
+ * @s: The caracter to print
+ *
+ *Return: return the number of character of a string.
  */
-
 int _strlen(char *s)
 {
-	int length;
-
-	length = 0;
-	while (*s != '\0')
-	{
-		s++;
-		length++;
-	}
-	return (length);
+	int i;
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
 
 /**
+ * _strcmp - String comparate
+ * @s1: String One
+ * @s2: String Two
+ *
+ *Return: The diference of the two string, if return 0 is the same string.
  */
-
 int _strcmp(char *s1, char *s2)
 {
-	int a;
+	int i;
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
+}
 
-	a = 0;
+/**
+ * _strcpy - copy a string.
+ * @dest: Array Copied
+ * @src: - Source of array
+ * Return: the string copied.
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
 
-	while (s1[a] != '\0' && s2[a] != '\0')
+	for (i = 0; src[i]; i++)
 	{
-		if (s1[a] < s2[a] || s1[a] > s2[a])
-			return (s1[a] - s2[a]);
-		a++;
+		dest[i] = src[i];
 	}
-	return (0);
+	dest[i] = src[i];
+	return (dest);
+
 }

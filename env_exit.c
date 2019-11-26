@@ -9,7 +9,7 @@ int env1(char*buffer, char **command)
 
   if (command[1] == NULL)
     {
-      ret = strcmp(command[0], "env");
+      ret = _strcmp(command[0], "env");
       if (ret == 0)
 	{
 	  for(i= 0; environ[i] != '\0'; i++)
@@ -22,7 +22,7 @@ int env1(char*buffer, char **command)
 	    }
 	  free(buffer);
 	  free(command);
-	  return(0);      
+	  return(0);
 	}
       return(1);
     }
@@ -41,7 +41,7 @@ void exit1(char *buffer, char **command)
 
   if (command[1] == NULL)
     {
-      ret = strcmp(command[0], "exit");
+      ret = _strcmp(command[0], "exit");
       if (ret == 0)
         {
           free(command);
