@@ -21,9 +21,9 @@ int env1(char *buffer, char **command)
 			{
 				for (j = 0; environ[i][j] != '\0'; j++)
 				{
-					write(1, &environ[i][j], 1);
+					write(STDOUT_FILENO, &environ[i][j], 1);
 				}
-				write(1, "\n", 1);
+				write(STDOUT_FILENO, "\n", 1);
 			}
 			free(buffer);
 			free(command);

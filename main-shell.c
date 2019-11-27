@@ -12,7 +12,7 @@ int main(void)
 
 	while (1)
 	{
-		if (isatty(0))
+		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, ":) ", 3);
 		buffer = validator_getline();
 		if (!buffer)
