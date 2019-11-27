@@ -92,7 +92,7 @@ int main(void)
 
 ## Coding style ⌨️
 
-Use the Betty style, it will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl) 
+Use the Betty style, it will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl).
 
 ## Authors ✒️
 

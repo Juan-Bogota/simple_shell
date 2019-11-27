@@ -1,10 +1,12 @@
 #include "MyShell.h"
 
 /**
- *
- *
+ * function_fork - function split directory
+ * @buffer: pointer
+ * @command: double pointer
+ * Return: void
+ * On error, -1 is returned, and errno is set appropriately.
  */
-
 void function_fork(char *buffer, char **command)
 {
 	int y, status;
@@ -18,7 +20,7 @@ void function_fork(char *buffer, char **command)
 		perror("Error Fork");
 		free(buffer);
 		free(command);
-		exit (98);
+		exit(98);
 	}
 	if (pidC == 0)
 	{

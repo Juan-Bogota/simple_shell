@@ -65,6 +65,7 @@ char *_strcat(char *dest, char *src)
 int _strlen(char *s)
 {
 	int i;
+
 	i = 0;
 	while (s[i] != '\0')
 		i++;
@@ -81,6 +82,7 @@ int _strlen(char *s)
 int _strcmp(char *s1, char *s2)
 {
 	int i;
+
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0')
 		i++;

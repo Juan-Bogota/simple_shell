@@ -1,7 +1,11 @@
 #include "MyShell.h"
 
 /**
- VALIDATOR _ GETLINE
+ * validator_getline - validator input
+ * @void: parameter input
+ *
+ * Return: buffer
+ * On error, -1 is returned, and errno is set appropriately.
  */
 
 char *validator_getline(void)

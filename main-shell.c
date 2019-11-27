@@ -25,5 +25,5 @@ int main(void)
 			continue;
 		function_fork(buffer, command);
 	}
-	return(0);
+	return (0);
 }

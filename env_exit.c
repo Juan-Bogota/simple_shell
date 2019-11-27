@@ -1,6 +1,5 @@
 #include "MyShell.h"
 
-
 /**
  * env1 - Function the validate the the enviroment variables
  * @buffer: string of getline.
@@ -46,8 +45,6 @@ void exit1(char *buffer, char **command)
 {
 	int ret;
 
-	if (command[1] == NULL)
-	{
 		ret = _strcmp(command[0], "exit");
 		if (ret == 0)
 		{
@@ -55,5 +52,4 @@ void exit1(char *buffer, char **command)
 			free(buffer);
 			exit(0);
 		}
-	}
 }
