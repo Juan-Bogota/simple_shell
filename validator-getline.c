@@ -24,7 +24,6 @@ char *validator_getline(void)
 	else if (ret == EOF)
 	{
 		free(buffer);
-		write(1, "\n", 1);
 		exit(0);
 	}
 	else
