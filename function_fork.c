@@ -4,10 +4,11 @@
  * function_fork - function split directory
  * @buffer: pointer
  * @command: double pointer
+ * @argv: argument[0]
  * Return: void
  * On error, -1 is returned, and errno is set appropriately.
  */
-void function_fork(char *buffer, char **command)
+void function_fork(char *buffer, char **command, char **argv)
 {
 	int y, status;
 	pid_t pidC;
@@ -29,12 +30,14 @@ void function_fork(char *buffer, char **command)
 			command[0] = get_path(command[0]);
 		if (execve(command[0], command, NULL) == -1)
 		{
-			perror("./hsh");
-			free(command), free(buffer);
+			perror(argv[0]);
+			free(buffer);
+			free(command);
 			exit(0);
 		}
 	}
 	else if (pidC > 0)
 		wait(&status);
-	free(command), free(buffer);
+	free(buffer);
+	free(command);
 }

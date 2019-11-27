@@ -35,9 +35,9 @@ char  *get_path(char *command)
 	}
 	folder[i] = NULL;
 	file = found_function(folder, command);
+	i = 0;
 	free(folder);
 	return (file);
-
 }
 
 /**

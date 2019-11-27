@@ -28,6 +28,6 @@ char *get_path(char *command);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 char *found_function(char **folder, char *command);
-void function_fork(char *buffer, char **command);
+void function_fork(char *buffer, char **command, char **argv);
 
 #endif

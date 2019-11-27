@@ -48,8 +48,8 @@ void exit1(char *buffer, char **command)
 		ret = _strcmp(command[0], "exit");
 		if (ret == 0)
 		{
-			free(command);
 			free(buffer);
+			free(command);
 			exit(0);
 		}
 }
