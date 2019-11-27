@@ -21,7 +21,7 @@ void function_fork(char *buffer, char **command, char **argv)
 		perror("Error Fork");
 		free(buffer);
 		free(command);
-		exit(98);
+		exit(-1);
 	}
 	if (pidC == 0)
 	{
@@ -33,7 +33,7 @@ void function_fork(char *buffer, char **command, char **argv)
 			perror(argv[0]);
 			free(buffer);
 			free(command);
-			exit(0);
+			exit(-1);
 		}
 	}
 	else if (pidC > 0)
