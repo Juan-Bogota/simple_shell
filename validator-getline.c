@@ -1,4 +1,5 @@
 #include "MyShell.h"
+
 /**
  VALIDATOR _ GETLINE
  */
@@ -27,5 +28,5 @@ char *validator_getline(void)
 		exit(0);
 	}
 	else
-	  return (buffer);
+		return (buffer);
 }
