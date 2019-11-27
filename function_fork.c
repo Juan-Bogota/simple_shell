@@ -27,7 +27,7 @@ void function_fork(char *buffer, char **command)
 			command[0] = get_path(command[0]);
 		if (execve(command[0], command, NULL) == -1)
 		{
-			perror("Error Execve");
+			perror("./hsh");
 			free(command), free(buffer);
 			exit(0);
 		}
