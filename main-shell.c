@@ -8,41 +8,22 @@
 int main(void)
 {
 	char *buffer = NULL, **command;
-  int status, pointer, i, y, ex;
-  pid_t pidC;
-  struct stat st;
+	int pointer, i;
 
 	while (1)
 	{
-	  write(1, "MyPrompt$ ", 10);
-	  buffer = validator_getline();
-	  if (!buffer)
-	    continue;
-	  pointer = _memory(buffer);
-	  command = function_strtok(buffer, pointer);
-	  exit1(buffer, command);
-	  i = env1(buffer, command);
-	  if(i == 0 || command == 0)
-	    continue;
-	  pidC = fork();
-	  if (pidC == -1)
-	    {
-	      perror("Error Fork");
-	      return(-1);
-	    }
-	  if (pidC == 0)
-	    {
-	      y = stat(command[0], &st);
-	      if (y != 0)
-		command[0] = get_path(command[0]);
-	      ex = execve(command[0], command, NULL);
-	      if (ex == -1)
-		perror("Error Execve");
-	    }
-	  else if (pidC > 0)
-		  wait(&status);
-	  free(command);
-	  free(buffer);
+		if (isatty(0))
+			write(1, "MyPrompt$ ", 10);
+		buffer = validator_getline();
+		if (!buffer)
+			continue;
+		pointer = _memory(buffer);
+		command = function_strtok(buffer, pointer);
+		exit1(buffer, command);
+		i = env1(buffer, command);
+		if (i == 0 || command == 0)
+			continue;
+		function_fork(buffer, command);
 	}
-	return (0);
+	return(0);
 }

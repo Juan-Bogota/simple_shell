@@ -15,6 +15,7 @@ extern char **environ;
 
 char *validator_getline(void);
 int _memory(char *buff);
+int _memory1(char *buff);
 char **function_strtok(char *buff, int pointer);
 void exit1(char *buffer, char **commands);
 int env1(char *buff, char **commands);
@@ -26,5 +27,7 @@ int _strcmp(char *s1, char *s2);
 char *get_path(char *command);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
+char *found_function(char **folder, char *command);
+void function_fork(char *buffer, char **command);
 
 #endif

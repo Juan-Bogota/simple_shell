@@ -23,7 +23,7 @@ char *validator_getline(void)
 	else if (ret == EOF)
 	{
 		free(buffer);
-		perror("EOF");
+		write(1, "\n", 1);
 		exit(0);
 	}
 	else

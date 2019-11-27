@@ -1,52 +1,59 @@
 #include "MyShell.h"
+
+
 /**
-   ENVIROMENT FUNCTION
-*/
+ * env1 - Function the validate the the enviroment variables
+ * @buffer: string of getline.
+ * @command: is the arguments of the buffer.
+ * Return: 1 is the function env or 0 is not function env.
+ */
 
-int env1(char*buffer, char **command)
+int env1(char *buffer, char **command)
 {
-  int i, j, ret;
+	int i, j, ret;
 
-  if (command[1] == NULL)
-    {
-      ret = _strcmp(command[0], "env");
-      if (ret == 0)
+	if (command[1] == NULL)
 	{
-	  for(i= 0; environ[i] != '\0'; i++)
-	    {
-	      for(j = 0; environ[i][j] != '\0'; j++)
+		ret = _strcmp(command[0], "env");
+		if (ret == 0)
 		{
-		  write (1, &environ[i][j], 1);
+			for (i = 0; environ[i] != '\0'; i++)
+			{
+				for (j = 0; environ[i][j] != '\0'; j++)
+				{
+					write(1, &environ[i][j], 1);
+				}
+				write(1, "\n", 1);
+			}
+			free(buffer);
+			free(command);
+			return (0);
 		}
-	      write(1, "\n", 1);
-	    }
-	  free(buffer);
-	  free(command);
-	  return(0);
+		return (1);
 	}
-      return(1);
-    }
-  return(1);
+	return (1);
 }
 
 
 /**
-    EXIT FUNCTION
+ * exit1 - Function the validate the command exit
+ * @buffer: string of getline.
+ * @command: is the arguments of the buffer.
+ * Return: no return is function void.
  */
-
 
 void exit1(char *buffer, char **command)
 {
-  int ret;
+	int ret;
 
-  if (command[1] == NULL)
-    {
-      ret = _strcmp(command[0], "exit");
-      if (ret == 0)
-        {
-          free(command);
-	  free(buffer);
-          exit(0);
-        }
-    }
+	if (command[1] == NULL)
+	{
+		ret = _strcmp(command[0], "exit");
+		if (ret == 0)
+		{
+			free(command);
+			free(buffer);
+			exit(0);
+		}
+	}
 }

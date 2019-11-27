@@ -1,4 +1,4 @@
-#include "MyShell.h"
+ #include "MyShell.h"
 
 /**
  * _strdup - function that returns a pointer to a newly allocated space in
@@ -33,20 +33,26 @@ char *_strdup(char *str)
  * @src: The word to print
  *Return: String concatenate.
  */
+
 char *_strcat(char *dest, char *src)
 {
-	int i;
-	int j;
-	i = 0;
+
+	int i = 0, c = 0, n = 0;
+
 	while (dest[i] != '\0')
-		i++;
-	j = 0;
-	while (src[j] != '\0')
 	{
-		dest[i + j] = src[j];
-		j++;
+		i++;
 	}
-	i++;
+	while (src[c] != '\0')
+	{
+		c++;
+	}
+	while (n <= c)
+	{
+		dest[i] = src[n];
+		n++;
+		i++;
+	}
 	return (dest);
 }
 

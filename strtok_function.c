@@ -1,20 +1,4 @@
 #include "MyShell.h"
-/**
- MEMORY POINTERS
- */
-int _memory(char *buffer)
-{
-  int i , count = 2;
-  char *delim = " ";
-
-  for(i = 0; buffer[i] != '\0'; i++)
-    {
-     	  if (buffer[i] == delim[0])
-	    count++;
-    }
-  return (count);
-}
-
 
 char **function_strtok(char *buffer, int pointer)
 {
@@ -39,4 +23,37 @@ char **function_strtok(char *buffer, int pointer)
 	}
 	command[i] = NULL;
 	return (command);
+}
+
+
+/**
+ MEMORY POINTERS
+ */
+int _memory(char *buffer)
+{
+  int i , count = 2;
+  char *delim = " ";
+
+  for(i = 0; buffer[i] != '\0'; i++)
+    {
+     	  if (buffer[i] == delim[0])
+	    count++;
+    }
+  return (count);
+}
+
+/**
+ MEMORY POINTERS
+ */
+int _memory1(char *buffer)
+{
+  int i , count = 2;
+  char *delim = ":";
+
+  for(i = 0; buffer[i] != '\0'; i++)
+    {
+     	  if (buffer[i] == delim[0])
+	    count++;
+    }
+  return (count);
 }

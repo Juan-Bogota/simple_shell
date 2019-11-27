@@ -3,57 +3,67 @@
 
 char  *get_path(char *command)
 {
-  int i;
-  char delim[2]= ":=", *tokens, **folder, *buffer;
-  char *temp;
-   i = 0;
+	int i, pointer;
+	char *delim = ":=", *tokens , **folder, *buffer;
+	char *file = NULL;
+	i = 0;
 
-  buffer = _getenv("PATH");
-
-  folder = malloc(sizeof(char) * 1024);
-  if(folder == NULL)
-    {
-      perror("error allocated memory");
-      return(NULL);
-    }
-   tokens = strtok(buffer, delim);
-   i = 0;
-   while (tokens)
+	buffer = _getenv("PATH");
+	pointer = _memory1(buffer);
+	folder = malloc(sizeof(char *) * pointer);
+	if(folder == NULL)
 	{
-	  folder[i] = tokens;
-	  tokens = strtok(NULL, delim);
-	  i++;
+		perror("error allocated memory");
+		return(NULL);
 	}
-      folder[i] = NULL;
-  i = 0;
-  temp = malloc(100);
-  if (temp == NULL)
-    return (NULL);
-
-  while (folder[i])
-    {
-      DIR *d;
-      struct dirent *dir;
-      d = opendir(folder[i]);
-      if (d)
+	tokens = strtok(buffer, delim);
+	i = 0;
+	while (tokens)
 	{
-	  while ((dir = readdir(d)) != NULL)
-	    {
-	      if((strcmp(dir->d_name, command)) == 0)
+		folder[i] = tokens;
+		tokens = strtok(NULL, delim);
+		i++;
+	}
+	folder[i] = NULL;
+	file = found_function(folder, command);
+	free(folder);
+	return(file);
+
+}
+
+
+char *found_function(char **folder, char *command)
+{
+	int i = 0;
+	char *temp;
+
+	temp = malloc(sizeof(char) * 100);
+	if (temp == NULL)
+		return (NULL);
+	while (folder[i])
+	{
+		DIR *d;
+		struct dirent *dir;
+		d = opendir(folder[i]);
+		if (d)
 		{
-		  _strcpy(temp, folder[i]);
-		  _strcat(temp, "/");
-		  _strcat(temp, dir->d_name);
-		  closedir(d);
-		  return(temp);
+			while ((dir = readdir(d)) != NULL)
+			{
+				if((_strcmp(dir->d_name, command)) == 0)
+				{
+					_strcpy(temp, folder[i]);
+					_strcat(temp, "/");
+					_strcat(temp, dir->d_name);
+				       	closedir(d);
+					return(temp);
+				}
+			}
+			closedir(d);
+			i++;
 		}
-	    }
-	  closedir(d);
-	  i++;
 	}
-    }
-  temp = command;
-  return(temp);
+	free(temp);
+	return(command);
 }
 
 
@@ -76,10 +86,10 @@ char *_getenv(char *s)
 		find_path = strtok(copy_env, "=");
 		if (_strcmp(find_path, s) == 0)
 		{
-		  final_path = _strstr(environ[i], "/");
+			final_path = _strstr(environ[i], "/");
 		}
 		i++;
-	}
 	free(copy_env);
+	}
 	return (final_path);
 }
