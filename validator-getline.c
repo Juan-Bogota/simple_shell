@@ -13,6 +13,7 @@ char *validator_getline(void)
 	char *buffer = NULL;
 	size_t size = 0;
 	ssize_t ret;
+	int i = 0;
 
 	ret = getline(&buffer, &size, stdin);
 	if (!buffer)
@@ -31,5 +32,14 @@ char *validator_getline(void)
 		exit(0);
 	}
 	else
-		return (buffer);
+	{
+		while (buffer[i] == ' ' && buffer[i + 1] == ' ')
+			i++;
+		if (buffer[i + 1] == '\n')
+		{
+			free(buffer);
+			return (NULL);
+		}
+	}
+	return (buffer);
 }
