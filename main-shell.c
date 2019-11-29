@@ -12,6 +12,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 	char *buffer = NULL, **command;
 	int pointer, i;
 
+	signal(SIGINT, sighandler);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))

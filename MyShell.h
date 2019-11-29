@@ -10,9 +10,12 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <dirent.h>
+#include <signal.h>
 
 extern char **environ;
 
+
+void sighandler(int);
 char *validator_getline(void);
 int _memory(char *buff);
 int _memory1(char *buff);

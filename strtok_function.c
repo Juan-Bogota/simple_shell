@@ -14,7 +14,7 @@ char **function_strtok(char *buffer, int pointer)
 	char **command;
 	size_t i;
 	char *tok;
-	char *delim = " \n";
+	char *delim = " \n\t";
 
 	command = malloc(sizeof(char *) * pointer);
 

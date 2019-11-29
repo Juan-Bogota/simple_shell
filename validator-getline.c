@@ -43,3 +43,11 @@ char *validator_getline(void)
 	}
 	return (buffer);
 }
+
+
+
+void sighandler(int signum)
+{
+	(void) signum;
+	write(STDOUT_FILENO, "\n:) ", 4);
+}
