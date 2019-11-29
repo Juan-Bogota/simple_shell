@@ -50,6 +50,6 @@ void exit1(char *buffer, char **command)
 		{
 			free(buffer);
 			free(command);
-			exit(2);
+			exit(-1);
 		}
 }
