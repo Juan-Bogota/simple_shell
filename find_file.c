@@ -16,6 +16,7 @@ char  *get_path(char *command)
 
 	i = 0;
 	buffer = _getenv("PATH");
+
 	pointer = _memory1(buffer);
 	folder = malloc(sizeof(char *) * pointer);
 

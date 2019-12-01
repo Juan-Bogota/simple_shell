@@ -59,11 +59,12 @@ void function_fork(char *buffer, char **command, char **argv, int count)
 
 int *_perror(char *argv, char *str, char *command)
 {
-	write(STDERR_FILENO, argv, strlen(argv));
+	write(STDERR_FILENO, argv, _strlen(argv));
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO,  str, strlen(str));
+	write(STDERR_FILENO,  str, _strlen(str));
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, command, strlen(command));
+	write(STDERR_FILENO, command, _strlen(command));
 	write(STDERR_FILENO, ": not found\n", 12);
+
 	return (0);
 }
