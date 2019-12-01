@@ -35,6 +35,7 @@ void function_fork(char *buffer, char **command, char **argv, int count)
 			if (execve(command[0], command, NULL) == -1)
 			{
 				_perror(argv[0], str, command[0]);
+				free(str);
 				free(buffer);
 				free(command);
 				exit(-1);
@@ -43,6 +44,7 @@ void function_fork(char *buffer, char **command, char **argv, int count)
 		else if (pidC > 0)
 			wait(&status);
 	}
+	free(str);
 	free(buffer);
 	free(command);
 }
@@ -57,11 +59,11 @@ void function_fork(char *buffer, char **command, char **argv, int count)
 
 int *_perror(char *argv, char *str, char *command)
 {
-	write(2, argv, strlen(argv));
-	write(2, ": ", 2);
-	write(2,  str, strlen(str));
-	write(2, ": ", 2);
-	write(2, command, strlen(command));
-	write(2, ": not found\n", 12);
+	write(STDERR_FILENO, argv, strlen(argv));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO,  str, strlen(str));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, command, strlen(command));
+	write(STDERR_FILENO, ": not found\n", 12);
 	return (0);
 }
