@@ -10,7 +10,7 @@
 int main(__attribute__((unused)) int argc, char *argv[])
 {
 	char *buffer = NULL, **command;
-	int pointer, i;
+	int pointer, i, count = 0;
 
 	signal(SIGINT, sighandler);
 	while (1)
@@ -18,7 +18,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, ":) ", 3);
 		buffer = validator_getline();
-
+		count++;
 		if (!buffer)
 			continue;
 		pointer = _memory(buffer);
@@ -28,7 +28,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 
 		if (i == 0 || command == 0)
 			continue;
-		function_fork(buffer, command, argv);
+		function_fork(buffer, command, argv, count);
 	}
 	return (0);
 }

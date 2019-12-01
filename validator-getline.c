@@ -28,6 +28,8 @@ char *validator_getline(void)
 	}
 	else if (ret == EOF)
 	{
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "\n", 1);
 		free(buffer);
 		exit(0);
 	}
@@ -44,6 +46,12 @@ char *validator_getline(void)
 	return (buffer);
 }
 
+/**
+ * sighandler - signal for press ctrl + D
+ * @signum: void input
+ *
+ * Return: void function, no return
+ */
 
 
 void sighandler(int signum)
